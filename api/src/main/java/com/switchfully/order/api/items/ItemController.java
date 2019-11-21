@@ -2,6 +2,7 @@ package com.switchfully.order.api.items;
 
 import com.switchfully.order.domain.items.Item.StockUrgency;
 import com.switchfully.order.service.items.ItemService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,7 @@ public class ItemController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public ItemDto createItem(@RequestBody ItemDto itemDto) {
         return itemMapper.toDto(
                 itemService.createItem(
@@ -34,6 +36,7 @@ public class ItemController {
     }
 
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public ItemDto updateItem(@PathVariable String id, @RequestBody ItemDto itemDto) {
         return itemMapper.toDto(
                 itemService.updateItem(
@@ -41,6 +44,7 @@ public class ItemController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.FOUND)
     public List<ItemDto> getAllItems(@RequestParam(name = "stockUrgency", required = false) String stockUrgency) {
         List<ItemDto> allItems = itemService.getAllItems().stream()
                 .map(item -> itemMapper.toDto(item))

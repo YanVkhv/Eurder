@@ -1,6 +1,7 @@
 package com.switchfully.order.api.customers;
 
 import com.switchfully.order.service.customers.CustomerService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class CustomerController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public CustomerDto createCustomer(@RequestBody CustomerDto customerDto) {
         return customerMapper.toDto(
                 customerService.createCustomer(
@@ -32,6 +34,7 @@ public class CustomerController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.FOUND)
     public List<CustomerDto> getAllCustomers() {
         return customerService.getAllCustomers().stream()
                 .map(customerMapper::toDto)
@@ -39,6 +42,7 @@ public class CustomerController {
     }
 
     @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.FOUND)
     public CustomerDto getCustomer(@PathVariable String id) {
         return customerMapper.toDto(
                 customerService.getCustomer(UUID.fromString(id)));

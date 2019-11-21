@@ -5,6 +5,7 @@ import com.switchfully.order.api.orders.dtos.OrderCreationDto;
 import com.switchfully.order.api.orders.dtos.OrderDto;
 import com.switchfully.order.api.orders.dtos.reports.OrdersReportDto;
 import com.switchfully.order.service.orders.OrderService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,7 @@ public class OrderController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.FOUND)
     public List<OrderDto> getAllOrders(@RequestParam(name = "shippableToday", required = false) boolean onlyIncludeShippableToday) {
         return orderService.getAllOrders(onlyIncludeShippableToday).stream()
                 .map(order -> orderMapper.toDto(order))
@@ -36,6 +38,7 @@ public class OrderController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
     public OrderAfterCreationDto createOrder(@RequestBody OrderCreationDto orderDto) {
         return orderMapper.toOrderAfterCreationDto(
                 orderService.createOrder(
@@ -43,12 +46,14 @@ public class OrderController {
     }
 
     @PostMapping(path = "/{id}/reorder", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public OrderAfterCreationDto reorderOrder(@PathVariable String id) {
         return orderMapper.toOrderAfterCreationDto(
                 orderService.reorderOrder(UUID.fromString(id)));
     }
 
     @GetMapping(path = "/customers/{customerId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.FOUND)
     public OrdersReportDto getOrdersForCustomerReport(@PathVariable String customerId) {
         return orderMapper.toOrdersReportDto(
                 orderService.getOrdersForCustomer(UUID.fromString(customerId)));
