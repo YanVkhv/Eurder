@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.switchfully.order.domain.customers.CustomerTestBuilder.aCustomer;
 
-class EntityDatabaseTest {
+class BaseEntityDatabaseTest {
 
     @Test
     void poplulate_getAll() {

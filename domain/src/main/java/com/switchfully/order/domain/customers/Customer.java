@@ -1,14 +1,18 @@
 package com.switchfully.order.domain.customers;
 
-import com.switchfully.order.domain.Entity;
+import com.switchfully.order.domain.BaseEntity;
 import com.switchfully.order.domain.customers.addresses.Address;
 import com.switchfully.order.domain.customers.emails.Email;
 import com.switchfully.order.domain.customers.phonenumbers.PhoneNumber;
 import com.switchfully.order.infrastructure.builder.Builder;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.UUID;
 
-public class Customer extends Entity {
+@Entity
+@Table(name = "CUSTOMER")
+public class Customer extends BaseEntity {
 
     private final String firstname;
     private final String lastname;
