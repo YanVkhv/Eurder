@@ -1,9 +1,13 @@
 package com.switchfully.order.domain;
 
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.util.UUID;
 
+@MappedSuperclass
 public abstract class BaseEntity {
 
+    @Id
     private UUID id;
 
     protected BaseEntity(UUID id) {

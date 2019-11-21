@@ -6,18 +6,41 @@ import com.switchfully.order.domain.customers.emails.Email;
 import com.switchfully.order.domain.customers.phonenumbers.PhoneNumber;
 import com.switchfully.order.infrastructure.builder.Builder;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Table(name = "CUSTOMER")
 public class Customer extends BaseEntity {
 
+    @Column(name = "FIRST_NAME")
     private final String firstname;
+
+    @Column(name = "LAST_NAME")
     private final String lastname;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "localPart", column = @Column(name = "LOC")),
+            @AttributeOverride(name = "domain", column = @Column(name = "DOMAIN")),
+            @AttributeOverride(name = "complete", column = @Column(name = "COMPLETE"))
+    })
     private final Email email;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "streetName", column = @Column(name = "STREET")),
+            @AttributeOverride(name = "houseNumber", column = @Column(name = "HOUSE_NUMBER")),
+            @AttributeOverride(name = "zipCode", column = @Column(name = "ZIP")),
+            @AttributeOverride(name = "country", column = @Column(name = "COUNTRY"))
+    })
     private final Address address;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "number", column = @Column(name = "NUMBER")),
+            @AttributeOverride(name = "countryCallingCode", column = @Column(name = "C_CODE"))
+    })
     private final PhoneNumber phoneNumber;
 
     private Customer(CustomerBuilder customerBuilder) {
