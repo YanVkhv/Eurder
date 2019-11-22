@@ -20,11 +20,7 @@ public class Customer extends BaseEntity {
     private String lastname;
 
     @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "localPart", column = @Column(name = "LOC")),
-            @AttributeOverride(name = "domain", column = @Column(name = "DOMAIN")),
-            @AttributeOverride(name = "complete", column = @Column(name = "COMPLETE"))
-    })
+    @AttributeOverride(name = "complete", column = @Column(name = "EMAIL"))
     private Email email;
 
     @Embedded
@@ -43,7 +39,8 @@ public class Customer extends BaseEntity {
     })
     private PhoneNumber phoneNumber;
 
-    public Customer(){ }
+    public Customer() {
+    }
 
     private Customer(CustomerBuilder customerBuilder) {
         super(customerBuilder.id);

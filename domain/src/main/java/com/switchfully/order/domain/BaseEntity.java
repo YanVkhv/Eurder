@@ -15,15 +15,15 @@ public abstract class BaseEntity {
     public BaseEntity() {}
 
     protected BaseEntity(UUID id) {
-        this.id = UUID.randomUUID();
+        this.id = generateId();
     }
 
-    public void generateId() throws IllegalStateException {
+    public UUID generateId() throws IllegalStateException {
         if (id != null) {
             throw new IllegalStateException("Generating an ID for a customer that already has " +
                     "an ID (" + id + ") is not allowed.");
         }
-        id = UUID.randomUUID();
+        return UUID.randomUUID();
     }
 
     public UUID getId() {

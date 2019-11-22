@@ -41,11 +41,11 @@ public class CustomerController {
                 .collect(Collectors.toList());
     }
 
-//    @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.FOUND)
-//    public CustomerDto getCustomer(@PathVariable String id) {
-//        return customerMapper.toDto(
-//                customerService.getCustomer(UUID.fromString(id)));
-//    }
+    @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.FOUND)
+    public CustomerDto getCustomer(@PathVariable String id) {
+        return customerMapper.toDto(
+                customerService.getCustomer(UUID.fromString(id)));
+    }
 
 }

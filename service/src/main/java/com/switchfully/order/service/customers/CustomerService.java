@@ -2,6 +2,7 @@ package com.switchfully.order.service.customers;
 
 import com.switchfully.order.domain.customers.Customer;
 import com.switchfully.order.domain.customers.CustomerRepository;
+import com.switchfully.order.infrastructure.exceptions.EntityNotFoundException;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -32,7 +33,12 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-//    public Customer getCustomer(UUID id) {
-//        return customerRepository.get(id);
-//    }
+    public Customer getCustomer(UUID id) {
+        var customer = customerRepository.findById(id);
+        if (customer.isEmpty()) {
+            throw new EntityNotFoundException("lookup", Customer.class, id);
+        }
+        return customer.get();
+    }
+
 }
