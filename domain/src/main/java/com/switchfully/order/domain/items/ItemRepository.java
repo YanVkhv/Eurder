@@ -1,15 +1,12 @@
-package com.switchfully.order.domain.items;
-
-import com.switchfully.order.domain.Repository;
-
-import javax.inject.Inject;
-import javax.inject.Named;
-
-@Named
-public class ItemRepository extends Repository<Item, ItemDatabase> {
-
-    @Inject
-    public ItemRepository(ItemDatabase database) {
-        super(database);
-    }
-}
+//package com.switchfully.order.domain.items;
+//
+//import org.springframework.data.repository.CrudRepository;
+//
+//import javax.inject.Inject;
+//import javax.inject.Named;
+//import java.util.UUID;
+//
+//@Named
+//public interface ItemRepository extends CrudRepository<Item, UUID> {
+//
+//}

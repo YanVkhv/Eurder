@@ -1,15 +1,12 @@
 package com.switchfully.order.domain.customers;
 
-import com.switchfully.order.domain.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
+import java.util.UUID;
 
 @Named
-public class CustomerRepository extends Repository<Customer, CustomerDatabase>{
-
-    @Inject
-    public CustomerRepository(CustomerDatabase database) {
-        super(database);
-    }
+public interface CustomerRepository extends CrudRepository<Customer, UUID>{
+    List<Customer> findAll();
 }

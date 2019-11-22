@@ -29,10 +29,10 @@ public class CustomerService {
     }
 
     public List<Customer> getAllCustomers() {
-        return new ArrayList<>(customerRepository.getAll().values());
+        return customerRepository.findAll();
     }
 
-    public Customer getCustomer(UUID id) {
-        return customerRepository.get(id);
-    }
+//    public Customer getCustomer(UUID id) {
+//        return customerRepository.get(id);
+//    }
 }

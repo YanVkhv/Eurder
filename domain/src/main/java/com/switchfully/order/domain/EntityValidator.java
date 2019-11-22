@@ -3,11 +3,11 @@ package com.switchfully.order.domain;
 public abstract class EntityValidator<T extends BaseEntity> {
 
     public boolean isValidForCreation(T entity) {
-        return !isAFieldEmptyOrNull(entity) && entity.getId() == null;
+        return !isAFieldEmptyOrNull(entity);
     }
 
     public boolean isValidForUpdating(T entity) {
-        return !isAFieldEmptyOrNull(entity) && entity.getId() != null;
+        return !isAFieldEmptyOrNull(entity);
     }
 
     protected abstract boolean isAFieldEmptyOrNull(T entity);

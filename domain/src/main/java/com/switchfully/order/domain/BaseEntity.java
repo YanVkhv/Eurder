@@ -15,7 +15,7 @@ public abstract class BaseEntity {
     public BaseEntity() {}
 
     protected BaseEntity(UUID id) {
-        this.id = id;
+        this.id = UUID.randomUUID();
     }
 
     public void generateId() throws IllegalStateException {
