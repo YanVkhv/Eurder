@@ -4,10 +4,12 @@ import com.switchfully.order.infrastructure.builder.Builder;
 
 public final class Address {
 
-    private final String streetName;
-    private final String houseNumber;
-    private final String postalCode;
-    private final String country;
+    private String streetName;
+    private String houseNumber;
+    private String postalCode;
+    private String country;
+
+    public Address(){}
 
     public Address(AddressBuilder addressBuilder) {
         this.streetName = addressBuilder.streetName;

@@ -4,8 +4,10 @@ import com.switchfully.order.infrastructure.builder.Builder;
 
 public final class PhoneNumber {
 
-    private final String number;
-    private final String countryCallingCode;
+    private String number;
+    private String countryCallingCode;
+
+    public PhoneNumber() {}
 
     private PhoneNumber(PhoneNumberBuilder phoneNumberBuilder) {
         this.number = phoneNumberBuilder.number;

@@ -4,9 +4,11 @@ import com.switchfully.order.infrastructure.builder.Builder;
 
 public final class Email {
 
-    private final String localPart;
-    private final String domain;
-    private final String complete;
+    private String localPart;
+    private String domain;
+    private String complete;
+
+    public Email() {}
 
     private Email(EmailBuilder emailBuilder) {
         this.localPart = emailBuilder.localPart;

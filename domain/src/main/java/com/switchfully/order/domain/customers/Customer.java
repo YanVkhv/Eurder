@@ -14,10 +14,10 @@ import java.util.UUID;
 public class Customer extends BaseEntity {
 
     @Column(name = "FIRST_NAME")
-    private final String firstname;
+    private String firstname;
 
     @Column(name = "LAST_NAME")
-    private final String lastname;
+    private String lastname;
 
     @Embedded
     @AttributeOverrides({
@@ -25,7 +25,7 @@ public class Customer extends BaseEntity {
             @AttributeOverride(name = "domain", column = @Column(name = "DOMAIN")),
             @AttributeOverride(name = "complete", column = @Column(name = "COMPLETE"))
     })
-    private final Email email;
+    private Email email;
 
     @Embedded
     @AttributeOverrides({
@@ -34,14 +34,16 @@ public class Customer extends BaseEntity {
             @AttributeOverride(name = "zipCode", column = @Column(name = "ZIP")),
             @AttributeOverride(name = "country", column = @Column(name = "COUNTRY"))
     })
-    private final Address address;
+    private Address address;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name = "number", column = @Column(name = "NUMBER")),
+            @AttributeOverride(name = "number", column = @Column(name = "PHONE_NUMBER")),
             @AttributeOverride(name = "countryCallingCode", column = @Column(name = "C_CODE"))
     })
-    private final PhoneNumber phoneNumber;
+    private PhoneNumber phoneNumber;
+
+    public Customer(){ }
 
     private Customer(CustomerBuilder customerBuilder) {
         super(customerBuilder.id);
