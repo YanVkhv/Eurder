@@ -26,7 +26,7 @@
         <springfox.swagger.version>2.9.2</springfox.swagger.version>
         <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
         <ojdbc8.version>19.3.0.0</ojdbc8.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.1.210</h2.version>
     </properties>
 
     <modules>
